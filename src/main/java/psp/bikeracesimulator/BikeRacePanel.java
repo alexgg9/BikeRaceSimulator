@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
+/**
+ * Panel for the bike race simulation.
+ */
 public class BikeRacePanel {
-
+    // Constants for team colors and names
     private static final Color YAMAHA_COLOR = new Color(3, 24, 98);
     private static final Color DUCATI_COLOR = new Color(254, 45, 20);
     private static final Color HONDA_COLOR = new Color(255, 119, 37);
@@ -15,6 +18,7 @@ public class BikeRacePanel {
 
     private static final String[] TEAM_NAMES = {"Yamaha", "Ducati", "Honda", "Suzuki"};
 
+    // Member variables for the panel and race components
     private JPanel panel;
     private JProgressBar[] motos = new JProgressBar[4];
     private JLabel msg = new JLabel("");
@@ -22,6 +26,11 @@ public class BikeRacePanel {
     private boolean resetRaceIsPressed = false;
     private boolean winner = false;
 
+
+    /**
+     * Constructor for the BikeRacePanel class.
+     * @param frame the frame to which the panel belongs
+     */
     public BikeRacePanel(JFrame frame) {
         panel = new JPanel(new GridLayout(5, 1));
 
@@ -48,9 +57,17 @@ public class BikeRacePanel {
         panel.add(btnReset);
     }
 
+    /**
+     * Getter for the panel.
+     * @return the panel
+     */
     public JPanel getPanel() {
         return panel;
     }
+
+    /**
+     *
+     */
 
     private class StartRace implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -65,6 +82,12 @@ public class BikeRacePanel {
         }
     }
 
+    /**
+     *
+     * @param i
+     * @param winnerMoto
+     */
+
     private synchronized void endRace(int i, int winnerMoto) {
         msg.setVisible(true);
         msg.setText(TEAM_NAMES[winnerMoto - 1] + " ha ganado la carrera");
@@ -74,6 +97,10 @@ public class BikeRacePanel {
         }
         SwingUtilities.invokeLater(() -> panel.add(msg));
     }
+
+    /**
+     *
+     */
 
     private class ResetRace implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -89,6 +116,9 @@ public class BikeRacePanel {
         }
     }
 
+    /**
+     *
+     */
     private class Moto extends Thread {
 
         private final JProgressBar moto;

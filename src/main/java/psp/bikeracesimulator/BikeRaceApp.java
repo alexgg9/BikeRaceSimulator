@@ -5,6 +5,9 @@ import java.awt.*;
 public class BikeRaceApp {
     private JFrame frame;
 
+    /**
+     * Constructor for BikeRaceApp class.
+     */
     public BikeRaceApp() {
         frame = new JFrame();
         frame.setBounds(100, 100, 600, 400);
@@ -19,6 +22,10 @@ public class BikeRaceApp {
         frame.setContentPane(mainPanel);
     }
 
+    /**
+     * Getter for the frame.
+     * @return the frame
+     */
     public JFrame getFrame() {
         return frame;
     }
